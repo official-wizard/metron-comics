@@ -48,7 +48,7 @@ val api = client.api
 
 ---
 
-## Search Issues [List]
+## Search Issue Example
 Search for a list of available issues by the provided query parameters!
 ### Available Parameters (Optional)
 These parameters are available to filter for comics available based on the provided information!
@@ -75,48 +75,54 @@ upc | filter by UPC id
 
 ### Example
 ```kotlin
-val issuesResponse = api.getIssues(series_name = "Howard the Duck").execute()
+// your Metron credentials
+val credentials: Credentials = Credentials("<username>", "<password>")
+
+// client instance 
+val client: MetronClient = MetronClient(credentials, Client.Version.V1)
+
+// api access
+val api = client.api
+
+// search for issues by series name
+val issuesRequest = api.getIssues(series_name = "Howard the Duck").execute()
 if (!issuesResponse.isSuccessful) {
     // handle error, e.g. issuesResponse.errorBody() 
     return
 }
 
+// obtain the request body
 val issues = issuesResponse.body()
 if (issues == null) {
-    // null check and handle unexpected null body
-    // this usually happens if there's an error, as above
+    // unexpected null body this usually happens if there's an error, 
+    // as above
     return
 }
 
+// no results were returned
 if (issues.results.isEmpty()) {
     // handle no issues being available by the query parameters
     return
 }
 
-// do as you wish with the issues.results available!
-```
+val firstIssue = issues.results.first()
+val firstIssueId = firstIssue.id
 
----
-
-## Search Issue [Retrieve]
-This searches for details on a requested issue based on the ID retrieved through the ```getIssues``` request!
-
-### Example
-```kotlin
-val issueId = ... // this can be the id obtained through list queries above
-
-val issueResponse = api.getIssue(issueId).execute()
-if (!issuesResponse.isSuccessful) {
+// search for the details for the issue's ID obtained
+val issueDetailsRequest = api.getIssue(firstIssueId).execute()
+if (!issueDetailsRequest.isSuccessful) {
     // handle error, e.g. issueResponse.errorBody() 
     return
 }
 
-val issue = issueResponse.body()
-if (issue == null) {
+// obtain details
+val issueDetails = issueDetailsRequest.body()
+if (issueDetails == null) {
     // null check and handle unexpected null body
     // this usually happens if there's an error, as above
     return
 }
 
-// do as you wish with the issue available!
+// do as you wish with the issueDetails available!
+println(issueDetails.desc)
 ```
