@@ -81,7 +81,7 @@ if (!issuesResponse.isSuccessful) {
     return
 }
 
-val issues = api.getIssues(series_name = "Howard the Duck").execute().body()
+val issues = issuesResponse.body()
 if (issues == null) {
     // null check and handle unexpected null body
     // this usually happens if there's an error, as above
