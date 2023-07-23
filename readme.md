@@ -23,7 +23,7 @@ Then add this Metron Comics Client Library to your project!
 <dependency>
     <groupId>com.github.official-wizard</groupId>
     <artifactId>metron-comics</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 ---
