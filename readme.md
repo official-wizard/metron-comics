@@ -79,7 +79,7 @@ upc | filter by UPC id
 val credentials: Credentials = Credentials("<username>", "<password>")
 
 // client instance 
-val client: MetronClient = MetronClient(credentials, Client.Version.V1)
+val client: MetronClient = MetronClient(credentials)
 
 // api access
 val api = client.api
