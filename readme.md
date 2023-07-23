@@ -72,7 +72,9 @@ store_date_range_after | filter by store date after
 store_date_range_before | filter by store date before
 upc | filter by UPC id
 
-
+#### Note
+In this example we use 2 endpoints to retrieve information, 1 for obtaining a list of issues available by the provided query, and the other for obtaining details on the selected issue from the list of issues.
+This is done as it's required to use the ID to fetch details on the issue requested!
 ### Example
 ```kotlin
 // your Metron credentials
@@ -107,6 +109,8 @@ if (issues.results.isEmpty()) {
 
 val firstIssue = issues.results.first()
 val firstIssueId = firstIssue.id
+
+// -- 2nd usage for obtaining details on the first issue from the results --
 
 // search for the details for the issue's ID obtained
 val issueDetailsRequest = api.getIssue(firstIssueId).execute()
