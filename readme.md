@@ -53,24 +53,24 @@ Search for a list of available issues by the provided query parameters!
 ### Available Parameters (Optional)
 These parameters are available to filter for comics available based on the provided information!
 
-Filter  | Description
--------- | -------------
-series_name | filter by series name
-cover_month  | filter by cover month
-cover_year  | filter by cover year
-cv_id  | filter [Comic Vine ID](https://www.wikidata.org/wiki/Property:P5905)
-modified_gt | filter by last modified greather than date (e.g Sat,22 Jul 2023 04:20:52 GMT)
-number | filter by issue number
-page | select a query page to traverse
-publisher_id | filter by publisher id
-publisher_name | filter by publisher name
-series_id | filter by series id
-series_year_began | filter by year series began
-sku | filter by barcode (sku)
-store_date | filter by store date
-store_date_range_after | filter by store date after
-store_date_range_before | filter by store date before
-upc | filter by UPC id
+| Filter                  | Description                                                                   |
+|-------------------------|-------------------------------------------------------------------------------|
+| series_name             | filter by series name                                                         |
+| cover_month             | filter by cover month                                                         |
+| cover_year              | filter by cover year                                                          |
+| cv_id                   | filter [Comic Vine ID](https://www.wikidata.org/wiki/Property:P5905)          |
+| modified_gt             | filter by last modified greather than date (e.g Sat,22 Jul 2023 04:20:52 GMT) |
+| number                  | filter by issue number                                                        |
+| page                    | select a query page to traverse                                               |
+| publisher_id            | filter by publisher id                                                        |
+| publisher_name          | filter by publisher name                                                      |
+| series_id               | filter by series id                                                           |
+| series_year_began       | filter by year series began                                                   |
+| sku                     | filter by barcode (sku)                                                       |
+| store_date              | filter by store date                                                          |
+| store_date_range_after  | filter by store date after                                                    |
+| store_date_range_before | filter by store date before                                                   |
+| upc                     | filter by UPC id                                                              |
 
 #### Note
 In this example we use 2 endpoints to retrieve information, 1 for obtaining a list of issues available by the provided query, and the other for obtaining details on the selected issue from the list of issues.
@@ -88,13 +88,13 @@ val api = client.api
 
 // search for issues by series name
 val issuesRequest = api.getIssues(series_name = "Howard the Duck").execute()
-if (!issuesResponse.isSuccessful) {
-    // handle error, e.g. issuesResponse.errorBody() 
+if (!issuesRequest.isSuccessful) {
+    // handle error, e.g. issuesRequest.errorBody() 
     return
 }
 
 // obtain the request body
-val issues = issuesResponse.body()
+val issues = issuesRequest.body()
 if (issues == null) {
     // unexpected null body this usually happens if there's an error, 
     // as above
