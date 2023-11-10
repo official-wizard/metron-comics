@@ -28,6 +28,12 @@ Then add this Metron Comics Client Library to your project!
 ```
 ---
 
+## Tips
+
+- It's recommended to implement a cache system to prevent re-querying!
+
+---
+
 ## Credentials
 To gain your credentials to access the API you must create an account on https://metron.cloud, the username and password you use is what will be used to access the API!
 

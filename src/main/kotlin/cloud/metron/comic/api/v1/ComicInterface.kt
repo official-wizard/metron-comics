@@ -11,7 +11,7 @@ interface ComicInterface {
     /**
      * list: Returns a list of all the story arcs.
      */
-    @GET("arc")
+    @GET("arc/")
     fun getArcs(
         @Query("cv_id") cv_id: Int? = null,
         @Query("modified_gt") modified_gt: String? = null,
@@ -38,7 +38,7 @@ interface ComicInterface {
     /**
      * list: Return a list of all the characters.
      */
-    @GET("character")
+    @GET("character/")
     fun getCharacters(
         @Query("cv_id") cv_id: Int? = null,
         @Query("modified_gt") modified_gt: String? = null,
@@ -65,7 +65,7 @@ interface ComicInterface {
     /**
      * list: Return a list of all the creators.
      */
-    @GET("creator")
+    @GET("creator/")
     fun getCreators(
         @Query("cv_id") cv_id: Int? = null,
         @Query("modified_gt") modified_gt: String? = null,
@@ -84,7 +84,7 @@ interface ComicInterface {
     /**
      * list: Return a list of all the issues.
      */
-    @GET("issue")
+    @GET("issue/")
     fun getIssues(
         @Query("cover_hash") cover_hash: String? = null,
         @Query("cover_month") cover_month: Int? = null,
@@ -118,7 +118,7 @@ interface ComicInterface {
     /**
      * list: Returns a list of all publishers.
      */
-    @GET("publisher")
+    @GET("publisher/")
     fun getPublishers(
         @Query("cv_id") cv_id: Int? = null,
         @Query("modified_gt") modified_gt: String? = null,
@@ -145,7 +145,7 @@ interface ComicInterface {
     /**
      * list: Returns a list of all the creator roles.
      */
-    @GET("role")
+    @GET("role/")
     fun getRoles(
         @Query("modified_gt") modified_gt: String? = null,
         @Query("name") name: String? = null,
@@ -155,7 +155,7 @@ interface ComicInterface {
     /**
      * list: Returns a list of all the comic series.
      */
-    @GET("series")
+    @GET("series/")
     fun getSeries(
         @Query("cv_id") cv_id: Int? = null,
         @Query("modified_gt") modified_gt: String? = null,
